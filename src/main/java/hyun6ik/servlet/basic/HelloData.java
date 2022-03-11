@@ -15,7 +15,7 @@ public class HelloData {
         this.age = age;
     }
 
-    public HelloData of(String username, int age) {
+    public static HelloData of(String username, int age) {
         return new HelloData(username, age);
     }
 }
