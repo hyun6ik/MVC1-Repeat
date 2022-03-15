@@ -15,7 +15,16 @@ public class ModelView {
         this.viewName = viewName;
     }
 
+    public ModelView(String viewName, Map<String, Object> model) {
+        this.viewName = viewName;
+        this.model = model;
+    }
+
     public static ModelView of(String viewName) {
         return new ModelView(viewName);
+    }
+
+    public static ModelView of(String viewName, Map<String, Object> model) {
+        return new ModelView(viewName, model);
     }
 }

@@ -6,7 +6,11 @@ import hyun6ik.servlet.basic.web.frontcontroller.MyView;
 import hyun6ik.servlet.basic.web.frontcontroller.v3.controller.MemberFormControllerV3;
 import hyun6ik.servlet.basic.web.frontcontroller.v3.controller.MemberListControllerV3;
 import hyun6ik.servlet.basic.web.frontcontroller.v3.controller.MemberSaveControllerV3;
+import hyun6ik.servlet.basic.web.frontcontroller.v4.controller.MemberFormControllerV4;
+import hyun6ik.servlet.basic.web.frontcontroller.v4.controller.MemberListControllerV4;
+import hyun6ik.servlet.basic.web.frontcontroller.v4.controller.MemberSaveControllerV4;
 import hyun6ik.servlet.basic.web.frontcontroller.v5.adapter.ControllerV3HandlerAdapter;
+import hyun6ik.servlet.basic.web.frontcontroller.v5.adapter.ControllerV4HandlerAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
@@ -44,12 +48,17 @@ public class FrontControllerServletV5 extends HttpServlet {
 
     private void initHandlerAdapters() {
         handlerAdapters.add(new ControllerV3HandlerAdapter());
+        handlerAdapters.add(new ControllerV4HandlerAdapter());
     }
 
     private void initHandlerMappingMap() {
         handlerMappingMap.put("/front-controller/v5/v3/members/new-form", new MemberFormControllerV3());
         handlerMappingMap.put("/front-controller/v5/v3/members/save", new MemberSaveControllerV3(memberRepository));
         handlerMappingMap.put("/front-controller/v5/v3/members", new MemberListControllerV3(memberRepository));
+
+        handlerMappingMap.put("/front-controller/v5/v4/members/new-form", new MemberFormControllerV4());
+        handlerMappingMap.put("/front-controller/v5/v4/members/save", new MemberSaveControllerV4(memberRepository));
+        handlerMappingMap.put("/front-controller/v5/v4/members", new MemberListControllerV4(memberRepository));
     }
 
     @Override
